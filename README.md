@@ -24,8 +24,8 @@
 
 {Make a list of websites that you found helpful in this project}
 
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
+- [Basic overview of SQL](https://www.youtube.com/watch?v=h8IWmmxIyS0)
 
 # Future Work
 
