@@ -16,9 +16,11 @@
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+The code for this project will primarily be written in Python using Visual Studio Code. The libraries I will be using are found in the requirements.txt file. To run this project on your own machine, clone the repository and then you can run:
+```
+pip install -r requirements.txt
+```
+and it will automatically install all the libraries that I have used. 
 
 # Useful Websites
 
