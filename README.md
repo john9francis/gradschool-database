@@ -13,10 +13,20 @@ I wrote this software for two reasons. First, I wanted a database containing all
 {Describe the relational database you are using.}
 I am using the SQL relational database, specifically Python's built in "sqlite3."
 
-{Describe the structure (tables) of the relational database that you created.}
 The program has a easy-to-use menu, but if you want to use the database itself, here is it's structure:
 
-{gradSchools.db structure}
+### gradSchools.db structure:
+Main table: 
+
+| ID | School | Country | City | State |
+
+Category table:
+
+| ID | Category (computer science, physics, etc) |
+
+Program child table:
+
+| ID | School ID | Category ID | Program | Credits required | tuition cost |
 
 # Development Environment
 
