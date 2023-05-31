@@ -17,8 +17,8 @@ The program has a easy-to-use menu, but if you want to use the database itself, 
 ### gradSchools.db structure:
 School table: 
 
-| ID | School | Country ID | State ID | City ID |
-|----|--------|------------|----------|---------|
+| ID | School | State ID | City ID |
+|----|--------|----------|---------|
 
 Career path table:
 
