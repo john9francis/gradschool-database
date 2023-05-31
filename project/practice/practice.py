@@ -1,7 +1,7 @@
 import _sqlite3
 
 # first, connect to a db file.
-con = _sqlite3.connect('project/example.db')
+con = _sqlite3.connect('project/practice/example.db')
 
 # cursor allows us to execute sql commands
 cur = con.cursor()
