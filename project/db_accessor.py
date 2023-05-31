@@ -9,9 +9,9 @@ class db_accessor:
     def __init__(self) -> None:
         pass
     
-    def open_database(self):
+    def open_database(self, database_path):
         # first, connect to a db file.
-        self._con = _sqlite3.connect('project/gradSchools.db')
+        self._con = _sqlite3.connect(database_path)
 
         # cursor allows us to execute sql commands
         self._cur = self._con.cursor()

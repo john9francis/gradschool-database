@@ -28,12 +28,36 @@ def main():
         # other
         # - Quit
         
-        user_input = _ui.get_input()
+        user_input = _ui.display_menu()
         print(user_input)
+        input()
 
         # allowing user to quit
         if user_input == "quit":
             x = False
+
+        if user_input == "add school":
+            # get the school name:
+            school_name = _ui.get_school_name()
+
+            # get the school city:
+            school_city = _ui.get_school_city()
+
+            # (check if the city is in the city database)
+
+            # get the school state:
+            school_state = _ui.get_school_state()
+
+            # (check if the state is in the state database)
+            
+            # confirm addition to database:
+            if _ui.confirm_add_to_database(f"{school_name}: {school_city}, {school_state}", "(enter database here)"):
+                # (add it to the database)
+                _ui.adding_to_database()
+            else:
+                _ui.back_to_menu()
+             
+
 
 
 if __name__ == "__main__":
