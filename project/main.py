@@ -1,13 +1,13 @@
-import _sqlite3
+# my own classes:
+import db_accessor
+import ui
 
-# first, connect to a db file.
-con = _sqlite3.connect('project/gradSchools.db')
+def main():
+    # initialize the classes we will be using
+    user_interface = ui.UI()
+    database = db_accessor.db_accessor()
+    
+    print("is it working?")
 
-# cursor allows us to execute sql commands
-cur = con.cursor()
-
-
-
-# save changes and close the connection
-con.commit()
-con.close()
+if __name__ == "__main__":
+    main()
