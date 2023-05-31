@@ -22,12 +22,12 @@ Main table:
 
 Program child table:
 
-| ID | School ID | Category ID | Program | Credits required | tuition cost |
+| ID | School ID | Career path ID | Program | Credits required | tuition cost |
 |---|---|---|---|---|---|
 
-Category table:
+Career path table:
 
-| ID | Category (computer science, physics, etc) |
+| ID | Career path (computer science, physics, etc) |
 |---|---|
 
 US cities and states table:
