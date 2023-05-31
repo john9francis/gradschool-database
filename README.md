@@ -25,6 +25,7 @@ Main table:
 Category table:
 
 | ID | Category (computer science, physics, etc) |
+|---|---|
 
 Program child table:
 
