@@ -32,7 +32,7 @@ Category table:
 
 US cities and states table:
 
-[Borrowed from kelvins US cities database](#Useful Websites)
+[Borrowed from kelvins US cities database](#useful-websites)
 
 # Development Environment
 
