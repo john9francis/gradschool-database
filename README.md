@@ -15,20 +15,20 @@ I am using the SQL relational database, specifically Python's built in "sqlite3.
 The program has a easy-to-use menu, but if you want to use the database itself, here is it's structure:
 
 ### gradSchools.db structure:
-Main table: 
+School table: 
 
 | ID | School | Country ID | State ID | City ID |
 |----|--------|------------|----------|---------|
 
-Program child table:
+Career path table:
 
-| ID | School ID | Category ID | Program | Credits required | tuition cost |
-|---|---|---|---|---|---|
-
-Category table:
-
-| ID | Category (computer science, physics, etc) |
+| ID | Career path (computer science, physics, etc) |
 |---|---|
+
+Program table:
+
+| ID | School ID | Career path ID | Program | Credits required | tuition cost | applied? | favorite? |
+|---|---|---|---|---|---|---|---|
 
 US cities and states table:
 
@@ -36,11 +36,7 @@ US cities and states table:
 
 # Development Environment
 
-The code for this project will primarily be written in Python using Visual Studio Code. The libraries I will be using are found in the requirements.txt file. To run this project on your own machine, clone the repository and then you can run:
-```
-pip install -r requirements.txt
-```
-and it will automatically install all the libraries that I have used. 
+I coded this project in Python using Visual Studio Code. I used the sqlite3 library which is an included library, so no need to install any different libraries. 
 
 # License
 
