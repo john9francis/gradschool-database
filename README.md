@@ -45,8 +45,9 @@ This software was created under the [MIT license](LICENSE).
 # Useful Websites
 
 - [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
-- [Basic overview of SQL](https://www.youtube.com/watch?v=h8IWmmxIyS0)
-- [Useful sqlite3 tutorial](https://www.youtube.com/watch?v=pd-0G0MigUA)
+- [Basic overview of SQL (video)](https://www.youtube.com/watch?v=h8IWmmxIyS0)
+- [Useful sqlite3 tutorial (video)](https://www.youtube.com/watch?v=pd-0G0MigUA)
+- [SQLite overview, data types, etc](https://www.sqlite.org/datatype3.html)
 - [kelvins US cities database](https://github.com/kelvins/US-Cities-Database)
 
 # Future Work
