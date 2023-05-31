@@ -42,6 +42,10 @@ pip install -r requirements.txt
 ```
 and it will automatically install all the libraries that I have used. 
 
+# License
+
+This software was created under the [MIT license](LICENSE).
+
 # Useful Websites
 
 - [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
