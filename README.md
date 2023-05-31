@@ -22,8 +22,8 @@ Main table:
 
 Program child table:
 
-| ID | School ID | Career path ID | Program | Credits required | tuition cost | applied? |
-|---|---|---|---|---|---|---|
+| ID | School ID | Career path ID | Program | Credits required | tuition cost | applied? | favorite? |
+|---|---|---|---|---|---|---|---|
 
 Career path table:
 
