@@ -21,6 +21,9 @@ Main table:
 | ID | School | Country | City | State |
 |----|--------|---------|------|-------|
 
+US cities table:
+| City | State |
+|---|---|
 
 Category table:
 
