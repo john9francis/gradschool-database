@@ -10,7 +10,6 @@ I wrote this software for two reasons. First, I wanted a database containing all
 
 # Relational Database
 
-{Describe the relational database you are using.}
 I am using the SQL relational database, specifically Python's built in "sqlite3."
 
 The program has a easy-to-use menu, but if you want to use the database itself, here is it's structure:
@@ -30,6 +29,9 @@ Category table:
 
 | ID | Category (computer science, physics, etc) |
 |---|---|
+
+US cities and states table:
+[Borrowed from kelvins US cities database](#Database=of=US=cities-and-states)
 
 # Development Environment
 
