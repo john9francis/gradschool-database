@@ -15,20 +15,20 @@ I am using the SQL relational database, specifically Python's built in "sqlite3.
 The program has a easy-to-use menu, but if you want to use the database itself, here is it's structure:
 
 ### gradSchools.db structure:
-Main table: 
+School table: 
 
 | ID | School | Country ID | State ID | City ID |
 |----|--------|------------|----------|---------|
-
-Program child table:
-
-| ID | School ID | Career path ID | Program | Credits required | tuition cost | applied? | favorite? |
-|---|---|---|---|---|---|---|---|
 
 Career path table:
 
 | ID | Career path (computer science, physics, etc) |
 |---|---|
+
+Program table:
+
+| ID | School ID | Career path ID | Program | Credits required | tuition cost | applied? | favorite? |
+|---|---|---|---|---|---|---|---|
 
 US cities and states table:
 
