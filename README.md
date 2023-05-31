@@ -18,12 +18,12 @@ The program has a easy-to-use menu, but if you want to use the database itself, 
 ### gradSchools.db structure:
 Main table: 
 
-| ID | School | Country | City | State |
-|----|--------|---------|------|-------|
+| ID | School | Country |
+|----|--------|---------|
 
 US cities table:
-| City | State |
-|---|---|
+| School ID | City | State |
+|---|---|---|
 
 Category table:
 
