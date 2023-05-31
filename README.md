@@ -45,6 +45,7 @@ and it will automatically install all the libraries that I have used.
 - [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
 - [Basic overview of SQL](https://www.youtube.com/watch?v=h8IWmmxIyS0)
 - [Useful sqlite3 tutorial](https://www.youtube.com/watch?v=pd-0G0MigUA)
+- [Database of US cities and states](https://github.com/kelvins/US-Cities-Database)
 
 # Future Work
 
