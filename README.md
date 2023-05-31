@@ -4,13 +4,12 @@ This program "grad school database" is designed to help someone organize grad sc
 
 I wrote this software for two reasons. First, I wanted a database containing all the grad schools I have applied for or what to apply for. Second, I created this project to teach myself SQL. If you are a beginner to SQL, my code should be easy to understand because I am a beginner myself.
 
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.}
+[//]: # (Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.)
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Relational Database
 
-{Describe the relational database you are using.}
 I am using the SQL relational database, specifically Python's built in "sqlite3."
 
 The program has a easy-to-use menu, but if you want to use the database itself, here is it's structure:
@@ -18,17 +17,22 @@ The program has a easy-to-use menu, but if you want to use the database itself, 
 ### gradSchools.db structure:
 Main table: 
 
-| ID | School | Country | City | State |
-|----|--------|---------|------|-------|
-
-
-Category table:
-
-| ID | Category (computer science, physics, etc) |
+| ID | School | Country ID | State ID | City ID |
+|----|--------|------------|----------|---------|
 
 Program child table:
 
 | ID | School ID | Category ID | Program | Credits required | tuition cost |
+|---|---|---|---|---|---|
+
+Category table:
+
+| ID | Category (computer science, physics, etc) |
+|---|---|
+
+US cities and states table:
+
+[Borrowed from kelvins US cities database](#useful-websites)
 
 # Development Environment
 
@@ -38,11 +42,16 @@ pip install -r requirements.txt
 ```
 and it will automatically install all the libraries that I have used. 
 
+# License
+
+This software was created under the [MIT license](LICENSE).
+
 # Useful Websites
 
 - [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
 - [Basic overview of SQL](https://www.youtube.com/watch?v=h8IWmmxIyS0)
 - [Useful sqlite3 tutorial](https://www.youtube.com/watch?v=pd-0G0MigUA)
+- [kelvins US cities database](https://github.com/kelvins/US-Cities-Database)
 
 # Future Work
 
