@@ -44,6 +44,7 @@ This software was created under the [MIT license](LICENSE).
 
 # Useful Websites
 
+- [SQLite3 download](https://www.sqlite.org/download.html)
 - [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
 - [Basic overview of SQL (video)](https://www.youtube.com/watch?v=h8IWmmxIyS0)
 - [Useful sqlite3 tutorial (video)](https://www.youtube.com/watch?v=pd-0G0MigUA)
