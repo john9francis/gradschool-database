@@ -30,6 +30,7 @@ Category table:
 Program child table:
 
 | ID | School ID | Category ID | Program | Credits required | tuition cost |
+|---|---|---|---|---|---|
 
 # Development Environment
 
