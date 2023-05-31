@@ -17,7 +17,7 @@ def main():
         # adding stuff:
         # - Add a career path
         # - Add a school
-        # - Add a 
+        # - Add a program
         # accessing stuff
         # - See what schools I have applied for
         # - search database by category
@@ -28,9 +28,11 @@ def main():
         # other
         # - Quit
         
-        user_input = _ui.display_menu()
+        user_input = _ui.get_input()
+        print(user_input)
 
-        if user_input == "q":
+        # allowing user to quit
+        if user_input == "quit":
             x = False
 
 
