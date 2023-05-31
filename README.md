@@ -19,6 +19,8 @@ The program has a easy-to-use menu, but if you want to use the database itself, 
 Main table: 
 
 | ID | School | Country | City | State |
+|----|--------|---------|------|-------|
+
 
 Category table:
 
