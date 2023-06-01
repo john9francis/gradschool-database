@@ -6,19 +6,12 @@ accesses the info you need.
 import _sqlite3
 
 class db_accessor:
-    def __init__(self) -> None:
-        pass
-    
-    def open_database(self, database_path):
+    def __init__(self, path):
         # first, connect to a db file.
-        self._con = _sqlite3.connect(database_path)
+        self._con = _sqlite3.connect(path)
 
         # cursor allows us to execute sql commands
         self._cur = self._con.cursor()
-
-    def close_database(self):
-        # save changes and close the connection
-        self._con.close()
 
     def create_tables(self):
         '''one time function to create our 3 tables:'''
@@ -36,4 +29,21 @@ class db_accessor:
                        Program text, Credits_Required integer, tuition_cost real, 
                        applied integer, favorite integer)''')
         
+    def close_database(self):
+        '''close the connection'''
+        self._cur.close()
+        self._con.close()
 
+    def check_value_existence(self, table_name, column_name, value):
+        '''takes in a value and checks if it's in the database'''
+
+        query = f"SELECT COUNT(*) FROM {table_name} WHERE {column_name} = ?"
+        self._cur.execute(query,(value,))
+        result = self._cur.fetchone()[0]
+
+        if result > 0:
+            return True
+        else:
+            return False
+
+    
