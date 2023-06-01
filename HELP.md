@@ -6,7 +6,7 @@ I had some trouble getting the data from [kelvin's US cities database](link) int
 
 First of all, his file looks something like this:
 
-```sql {id="sql-file" class="blue large" data-filename="us_cities.sql"}
+```sql
 --
 -- Table structure for table `us_states`
 --
@@ -28,3 +28,29 @@ INSERT INTO US_STATES VALUES
 ```
 
 Now, to convert this into a .db file, I used the following code: 
+
+```python
+import _sqlite3
+
+# Path to the SQL script file
+sql_file = 'us_cities.sql'
+
+# Path to the SQLite database file to be created
+db_file = 'us_cities.db'
+
+# Connect to the SQLite database
+conn = _sqlite3.connect(db_file)
+
+# Open the SQL script file
+with open(sql_file, 'r') as f:
+    # Read the SQL script content
+    sql_script = f.read()
+
+    # Execute the SQL script using the connection
+    conn.executescript(sql_script)
+
+# Commit the changes and close the connection
+conn.commit()
+conn.close()
+
+```
