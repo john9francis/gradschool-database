@@ -6,7 +6,7 @@ I had some trouble getting the data from [kelvin's US cities database](link) int
 
 First of all, his file looks something like this:
 
-```sql
+```sql {id="sql-file" class="blue large" data-filename="us_cities.sql"}
 --
 -- Table structure for table `us_states`
 --
