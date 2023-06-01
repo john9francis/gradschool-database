@@ -44,10 +44,20 @@ This software was created under the [MIT license](LICENSE).
 
 # Useful Websites
 
+Development environment stuff:
 - [Setting up Python virtual environment](https://www.youtube.com/watch?v=KxvKCSwlUv8)
-- [Basic overview of SQL (video)](https://www.youtube.com/watch?v=h8IWmmxIyS0)
-- [Useful sqlite3 tutorial (video)](https://www.youtube.com/watch?v=pd-0G0MigUA)
+
+Tutorial videos: 
+- [Basic overview of SQL](https://www.youtube.com/watch?v=h8IWmmxIyS0)
+- [Useful sqlite3 beginner tutorial](https://www.youtube.com/watch?v=pd-0G0MigUA)
+
+Help with learning the syntax of SQLite:
 - [SQLite data types](https://www.sqlite.org/datatype3.html)
+
+Super nice application to visualize your database:
+- [DB browser download](https://sqlitebrowser.org/)
+
+Where I got the database of cities and states:
 - [kelvins US cities database](https://github.com/kelvins/US-Cities-Database)
 
 # Future Work
