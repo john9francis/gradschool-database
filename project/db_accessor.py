@@ -46,4 +46,29 @@ class db_accessor:
         else:
             return False
 
+    def check_matching_ID(
+            self,
+            state_code,
+            city_value):
+        '''takes in a parent value and a child value,
+        and checks to see if the parent ID matches the child's parent ID.'''
+
+        # now get the parent's ID
+        self._cur.execute(f"""SELECT ID 
+                        FROM US_STATES 
+                        WHERE STATE_CODE='{state_code}'""")
+        parent_ID = self._cur.fetchone()
+
+        # get the child's parent ID
+        self._cur.execute(f"""SELECT ID_STATE 
+                        FROM US_CITIES
+                        WHERE CITY='{city_value}'""")
+        
+        # go through the state ID's and if one of them matches, return true
+        state_IDs = self._cur.fetchall()
+        for ID in state_IDs:
+            if ID == parent_ID:
+                return True
+            
+        return False
     

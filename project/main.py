@@ -48,15 +48,26 @@ def main():
                 if us_cities_db.check_value_existence("US_CITIES","CITY",school_city):
                     valid_city = True
                 else:
-                    _ui.bad_input()
+                    _ui.not_in_database("US_CITIES")
 
-            # get the school state:
-            school_state = _ui.get_school_state()
+            
 
             # (check if the state is in the state database)
+            valid_state = False
+            while not valid_state:
+                # get the school state:
+                school_state = _ui.get_school_state()
+
+                # (check if the state is in the state database)
+                if us_cities_db.check_value_existence("US_STATES","STATE_CODE",school_state):
+                    valid_state = True
+                else:
+                    _ui.not_in_database("US_STATES")
 
             # (check if the city exists in the state)
-            
+            print(us_cities_db.check_matching_ID(school_state, school_city))
+            input()
+
             # confirm addition to database:
             if _ui.confirm_add_to_database(f"{school_name}: {school_city}, {school_state}", "grad schools"):
                 # (add it to the database)
@@ -68,9 +79,11 @@ def main():
         if user_input == "quit":
             x = False
 
-            # don't forget to close those databases
-            grad_school_db.close_database()
-            us_cities_db.close_database()
+    # end of that while loop===
+
+    # don't forget to close those databases
+    grad_school_db.close_database()
+    us_cities_db.close_database()
              
 
 if __name__ == "__main__":
