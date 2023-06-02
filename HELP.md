@@ -54,3 +54,38 @@ conn.commit()
 conn.close()
 
 ```
+
+## changing the structure of a table
+
+I ran into an issue where I had already created some tables but then I wanted to change their ID columns to autoincrement (automatically generate unique ID's for each new entry.) The only way to do that is to create a new table with the autoincrement feature, copy all the info from the old table into the new table, and delete the old table. Here's an example of doing that:
+
+```python
+import sqlite3
+
+def add_autoincrement():
+    conn = sqlite3.connect("your_database.db")
+    cursor = conn.cursor()
+
+    # Create a new temporary table with the desired structure
+    cursor.execute("""CREATE TABLE TempTable (
+                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Value TEXT
+                    )""")
+    
+    # Copy data from the existing table to the temporary table
+    cursor.execute("INSERT INTO TempTable (Value) SELECT Value FROM YourTable")
+    
+    # Drop the existing table
+    cursor.execute("DROP TABLE YourTable")
+    
+    # Rename the temporary table to the original table name
+    cursor.execute("ALTER TABLE TempTable RENAME TO YourTable")
+
+    conn.commit()
+    conn.close()
+
+# Usage example
+add_autoincrement()
+
+```
+
