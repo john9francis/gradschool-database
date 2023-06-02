@@ -8,26 +8,11 @@ def main():
     grad_school_db = db_accessor.db_accessor("project/databases/gradSchools.db")
     us_cities_db = db_accessor.db_accessor("project/databases/us_cities.db")
 
-    x = True
-    while x:
-        _ui.clear_screen()
-        
-        user_input = _ui.display_menu()
-
-        if user_input == "add school":
-            add_school()
-        if user_input == "quit":
-            # get out of the big old while loop
-            x = False
-
-    # don't forget to close those databases
-    grad_school_db.close_database()
-    us_cities_db.close_database()
-
-
     #region main functions
 
     def add_school():
+        '''Uses the UI and the two databases to add a school to the school database'''
+
         # get the school name:
         school_name = _ui.get_school_name()
         valid_city_and_state = False
@@ -71,11 +56,58 @@ def main():
             school_value_list = [school_name, country_id, state_id, city_id]
             # step three: add the grad school to the database.
             grad_school_db.add_to_database("school", school_value_list)
+
+            _ui.user_input_to_continue()
         else:
             _ui.back_to_menu()
+            _ui.user_input_to_continue()
+
+    
+    def add_program():
+
+        pass
+
+    
+    def add_career_path():
+        '''uses the UI and the grad_school database to add a 
+        new career path to the grad school database.'''
+
+        # get the new career path
+        career_path = _ui.get_career_path()
+
+        # confirm with user
+        if _ui.confirm_add_to_database(career_path, "career_path"):
+            # add the career path to the database
+            _ui.adding_to_database()
+            grad_school_db.add_to_database("career_path", [career_path])
+            _ui.user_input_to_continue()
+        else:
+            _ui.back_to_menu()
+            _ui.user_input_to_continue()
+
 
     #endregion
-             
+
+    while True:
+        _ui.clear_screen()
+        
+        user_input = _ui.display_menu()
+
+        if user_input == "add school":
+            add_school()
+        if user_input == "add program":
+            #add_program()
+            pass
+        if user_input == "add career path":
+            add_career_path()
+        if user_input == "quit":
+            # get out of the big old while loop
+            break
+
+    # don't forget to close those databases
+    grad_school_db.close_database()
+    us_cities_db.close_database()
+
 
 
 if __name__ == "__main__":

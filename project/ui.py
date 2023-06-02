@@ -36,9 +36,9 @@ class UI:
                 case "1":
                     return "add school"
                 case "2":
-                    return "add program"
-                case "3":
                     return "add career path"
+                case "3":
+                    return "add program"
                 case "4":
                     return "search school"
                 case "5":
@@ -64,6 +64,12 @@ class UI:
     def get_school_city(self):
         return input ("In which city is the school located? (e.g. Atlanta): ")
     
+    def get_career_path(self):
+        return input("What is the name of your new career path? (e.g. Software developer): ")
+    
+    def user_input_to_continue(self):
+        return input("Press enter to continue: ")
+
     def bad_input(self):
         print("Sorry, invalid choice. Please try again. ")
 
@@ -89,10 +95,8 @@ class UI:
 
     def adding_to_database(self):
         print("Adding to the database... ")
-        input()
 
     def back_to_menu(self):
         print("Going back to main menu... ")
-        input()
 
 
