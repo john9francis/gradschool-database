@@ -109,7 +109,6 @@ def main():
             _ui.back_to_menu()
             _ui.user_input_to_continue()
 
-
     
     def add_career_path():
         '''uses the UI and the grad_school database to add a 
@@ -128,6 +127,13 @@ def main():
             _ui.back_to_menu()
             _ui.user_input_to_continue()
 
+    
+    def search_program_by_state():
+        pass
+    
+
+    def search_program_by_career():
+        pass
 
     #endregion
 
@@ -144,6 +150,14 @@ def main():
 
         if user_input == "add career path":
             add_career_path()
+
+        if user_input == "search program by state":
+            #search_program_by_state()
+            pass
+
+        if user_input == "search program by career":
+            #search_program_by_career()
+            pass
 
         if user_input == "quit":
             # get out of the big old while loop

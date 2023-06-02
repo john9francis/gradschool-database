@@ -24,8 +24,9 @@ class UI:
         print("1. Add a new grad school (e.g. university of georgia)")
         print("2. Add a new Career Path (e.g. software engineer)")
         print("3. Add a new program (e.g. masters in electrical engineering)")
-        print("4. Search for a grad school in the database")
-        print("5. press q any time to quit")
+        print("4. Search programs by state")
+        print("5. Search programs by career path")
+        print("6. press q any time to quit")
 
         valid_choice = False
         while not valid_choice:
@@ -40,8 +41,10 @@ class UI:
                 case "3":
                     return "add program"
                 case "4":
-                    return "search school"
+                    return "search program by state"
                 case "5":
+                    return "search program by career"
+                case "6":
                     return "quit"
                 case "q":
                     return "quit"
