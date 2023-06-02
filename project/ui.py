@@ -67,8 +67,20 @@ class UI:
     def get_career_path(self):
         return input("What is the name of your new career path? (e.g. Software developer): ")
     
+    def get_program_name(self):
+        return input("What is the name of the program the school offers? (e.g. MS in computer science): ")
+
     def user_input_to_continue(self):
         return input("Press enter to continue: ")
+    
+    def choose_for_program(self, category, schools):
+        print()
+        print(f"Which {category} offers this program? ")
+        print("Options:")
+        for school in schools:
+            print(school)
+
+        return input("(Type your answer here): ")
 
     def bad_input(self):
         print("Sorry, invalid choice. Please try again. ")
@@ -98,5 +110,6 @@ class UI:
 
     def back_to_menu(self):
         print("Going back to main menu... ")
+
 
 

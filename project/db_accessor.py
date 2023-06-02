@@ -91,6 +91,13 @@ class db_accessor:
             return result[0]
         else:
             return None    
+        
+    def get_all_from_column(self, table_name, column_name):
+        '''returns a list with all the values in a column'''
+        self._cur.execute(f'SELECT {column_name} FROM {table_name}')
+        rows = self._cur.fetchall()
+
+        return [row[0] for row in rows]
 
 
 
