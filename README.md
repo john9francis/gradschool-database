@@ -58,6 +58,7 @@ Tutorial videos:
 
 Help with learning the syntax of SQLite:
 - [SQLite data types](https://www.sqlite.org/datatype3.html)
+- [W3Schools SQL syntax (super useful)](https://www.w3schools.com/sql/sql_syntax.asp)
 
 Super nice application to visualize your database  (I highly recommend it):
 - [DB browser download](https://sqlitebrowser.org/)
