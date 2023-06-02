@@ -39,39 +39,51 @@ def main():
             # get the school name:
             school_name = _ui.get_school_name()
 
-            valid_city = False
-            while not valid_city:
-                # get the school city:
-                school_city = _ui.get_school_city()
+            valid_city_and_state = False
 
-                # (check if the city is in the city database)
-                if us_cities_db.check_value_existence("US_CITIES","CITY",school_city):
-                    valid_city = True
-                else:
-                    _ui.not_in_database("US_CITIES")
-
-            
-
-            # (check if the state is in the state database)
-            valid_state = False
-            while not valid_state:
-                # get the school state:
-                school_state = _ui.get_school_state()
-
+            while not valid_city_and_state:
+                while True:
+                    # get the school city:
+                    school_city = _ui.get_school_city()
+    
+                    # (check if the city is in the city database)
+                    if us_cities_db.check_value_existence("US_CITIES","CITY",school_city):
+                        break
+                    else:
+                        _ui.not_in_database("US_CITIES")
+    
                 # (check if the state is in the state database)
-                if us_cities_db.check_value_existence("US_STATES","STATE_CODE",school_state):
-                    valid_state = True
+                while True:
+                    # get the school state:
+                    school_state = _ui.get_school_state()
+    
+                    # (check if the state is in the state database)
+                    if us_cities_db.check_value_existence("US_STATES","STATE_CODE",school_state):
+                        break
+                    else:
+                        _ui.not_in_database("US_STATES")
+                
+                # (check if the city has the state ID)
+                if us_cities_db.check_matching_ID_us_cities(school_state, school_city):
+                    valid_city_and_state = True
                 else:
-                    _ui.not_in_database("US_STATES")
-
-            # (check if the city exists in the state)
-            print(us_cities_db.check_matching_ID(school_state, school_city))
-            input()
-
+                    _ui.IDs_dont_match(school_city, school_state)
+    
             # confirm addition to database:
             if _ui.confirm_add_to_database(f"{school_name}: {school_city}, {school_state}", "grad schools"):
                 # (add it to the database)
                 _ui.adding_to_database()
+
+                # step one: generate an ID for the school
+
+                # step two: find the state_id and the city_id
+
+                # step three: put these values in a list with the specific order
+
+                # step four: add the grad school to the database.
+                value_list = ["ID","school","Country_Id","state_id","city_id"]
+                grad_school_db.add_to_database("school",)
+
             else:
                 _ui.back_to_menu()
 

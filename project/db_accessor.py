@@ -13,22 +13,7 @@ class db_accessor:
         # cursor allows us to execute sql commands
         self._cur = self._con.cursor()
 
-    def create_tables(self):
-        '''one time function to create our 3 tables:'''
 
-        # School table
-        self._cur.execute('''CREATE TABLE school
-                       (ID integer, School text, Country_ID integer, 
-                       State_ID integer, City_ID integer)''')
-        # career path table
-        self._cur.execute('''CREATE TABLE career_path
-                       (ID integer, Career_Path text)''')
-        # program table
-        self._cur.execute('''CREATE TABLE program
-                       (ID integer, School_ID integer, Carrer_Path_ID integer, 
-                       Program text, Credits_Required integer, tuition_cost real, 
-                       applied integer, favorite integer)''')
-        
     def close_database(self):
         '''close the connection'''
         self._cur.close()
@@ -46,7 +31,7 @@ class db_accessor:
         else:
             return False
 
-    def check_matching_ID(
+    def check_matching_ID_us_cities(
             self,
             state_code,
             city_value):
@@ -72,3 +57,51 @@ class db_accessor:
             
         return False
     
+    def add_to_database(self, table_name, value_list):
+        '''takes in the table name and a list of values (in order)
+        and enters them into the database. 
+        - WARNING: make sure you put the values in the correct order
+        that the columns are in!!!'''
+        pass
+    
+
+
+#region DANGER ZONE, READ FUNCTION DESCRIPTIONS
+
+    def create_tables(self):
+        '''one time function to create our 3 tables:'''
+
+        # School table
+        self._cur.execute('''CREATE TABLE IF NOT EXISTS school
+                       (ID integer, School text, Country_ID integer, 
+                       State_ID integer, City_ID integer)''')
+        # career path table
+        self._cur.execute('''CREATE TABLE IF NOT EXISTS career_path
+                       (ID integer, Career_Path text)''')
+        # program table
+        self._cur.execute('''CREATE TABLE IF NOT EXISTS program
+                       (ID integer, School_ID integer, Carrer_Path_ID integer, 
+                       Program text, Credits_Required integer, tuition_cost real, 
+                       applied integer, favorite integer)''')
+        
+    def add_autoincrement(self):
+        '''A one-time function to change the tables to 
+        Autoincrementing tables (automatically generate unique ID's)
+        - WARNING: make sure you go in and change all the values and stuff
+        before running this code!'''
+
+        # program table
+        # ID, School_ID, Career_Path_ID, Program
+
+        # Create a new temporary table with the desired structure
+        self._cur.execute("""DROP TABLE program""")
+        self._cur.execute("""CREATE TABLE program (
+                            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                            School_ID INTEGER,
+                            Career_Path_ID INTEGER,
+                            Program text
+                        )""")
+
+        self._con.commit()
+
+#endregion

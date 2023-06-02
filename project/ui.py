@@ -70,6 +70,9 @@ class UI:
     def not_in_database(self, database_name):
         print(f"This was not found in the {database_name} database. Please try again. ")
 
+    def IDs_dont_match(self, value_1, value_2):
+        print(f"{value_1} doesn't match with {value_2}. Please try again. ")
+
     def confirm_add_to_database(self, addition, database_name):
         valid_choice = False
 
