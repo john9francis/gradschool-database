@@ -90,7 +90,20 @@ class db_accessor:
         if result:
             return result[0]
         else:
-            return None    
+            return None   
+
+    def get_value_by_ID(self, table_name, column_name, ID):
+        '''takes in ID and returns the corresponding value in the column you choose.
+        NOTE: only returns the first one with that ID. (assuming unique ID's.)'''
+
+        query = f'SELECT {column_name} FROM {table_name} WHERE ID = ?'
+        self._cur.execute(query, (ID,))
+        result = self._cur.fetchone() 
+
+        if result:
+            return result[0]
+        else:
+            return None
         
     def get_all_from_column(self, table_name, column_name):
         '''returns a list with all the values in a column'''
@@ -99,6 +112,13 @@ class db_accessor:
 
         return [row[0] for row in rows]
 
+    def get_all_by_ID(self, table_name, column_name, ID_column_name, ID):
+        '''returns a list of values with a specific ID'''
+        query = f'SELECT {column_name} FROM {table_name} WHERE {ID_column_name} = ?'
+        self._cur.execute(query, (ID,))
+        rows = self._cur.fetchall()
+
+        return [row[0] for row in rows]
 
 
     #region DANGER ZONE, READ FUNCTION DESCRIPTIONS

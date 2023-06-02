@@ -19,7 +19,7 @@ def main():
         while not valid_city_and_state:
             while True:
                 # get the school city:
-                school_city = _ui.get_school_city()
+                school_city = _ui.get_city()
 
                 # (check if the city is in the city database)
                 if us_cities_db.check_value_existence("US_CITIES","CITY",school_city):
@@ -30,7 +30,7 @@ def main():
             # (check if the state is in the state database)
             while True:
                 # get the school state:
-                school_state = _ui.get_school_state()
+                school_state = _ui.get_state()
 
                 # (check if the state is in the state database)
                 if us_cities_db.check_value_existence("US_STATES","STATE_CODE",school_state):
@@ -129,8 +129,20 @@ def main():
 
     
     def search_program_by_state():
-        pass
+        '''asks user to enter a state, and displays all the programs in that state.'''
+        
+        # get state:
+        state = _ui.get_state()
+
+        # get the state's ID
+        state_ID = us_cities_db.get_id_by_value("US_STATES","STATE_CODE",state)
+
+        # get all the schools in that state:
+        school_list = grad_school_db.get_all_by_ID("school","School","State_ID",state_ID)
     
+        # get all the programs from that school...
+        # (loop through the schools and get the ID for each)
+        
 
     def search_program_by_career():
         pass

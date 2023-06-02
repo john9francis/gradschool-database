@@ -61,11 +61,11 @@ class UI:
     def get_school_name(self):
         return input("What is the name of the school? (e.g. Georgia Tech): ")
     
-    def get_school_state(self):
-        return input("In which state is the school located? (e.g. GA): ")
+    def get_state(self):
+        return input("Please enter state (e.g. GA): ")
     
-    def get_school_city(self):
-        return input ("In which city is the school located? (e.g. Atlanta): ")
+    def get_city(self):
+        return input ("Please enter city (e.g. Atlanta): ")
     
     def get_career_path(self):
         return input("What is the name of your new career path? (e.g. Software developer): ")
