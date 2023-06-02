@@ -23,20 +23,17 @@ I am using the SQL relational database, specifically Python's built in "sqlite3.
 If you want to use the database, here is it's structure:
 
 ### gradSchools.db structure:
-School table: 
-
-| ID | School | State ID | City ID |
-|----|--------|----------|---------|
-
-Career path table:
-
-| ID | Career path (computer science, physics, etc) |
+career_path:
+|ID (auto-enumerating integer)|Career_path (text)|
 |---|---|
 
-Program table:
+program:
+|ID (auto-enumerating integer)|School_ID (integer)|Career_Path_ID (integer)|Program (text)|
+|---|---|---|---|
 
-| ID | School ID | Career path ID | Program | Credits required | tuition cost | applied? | favorite? |
-|---|---|---|---|---|---|---|---|
+school:
+|ID (auto-enumerating integer)|School (text)|Country_ID (integer)|State_ID (integer)|City_ID (integer)|
+|---|---|---|---|---|
 
 US cities and states table:
 
