@@ -53,7 +53,6 @@ class UI:
                     valid_choice = False
             
 
-    
     def clear_screen(self):
         if os.name == 'nt':
             _ = os.system('cls')

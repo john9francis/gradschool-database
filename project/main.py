@@ -168,6 +168,7 @@ def main():
 
         _ui.user_input_to_continue()
 
+
     def search_program_by_career():
         '''asks user for their desired career path, and
         displays all the grad programs that fulfill that career path.'''
@@ -208,6 +209,7 @@ def main():
             _ui.display_program_with_school(program, program_with_school[program])
 
         _ui.user_input_to_continue()
+
 
     #endregion
 
