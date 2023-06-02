@@ -1,8 +1,16 @@
 # Overview
 
-This program "grad school database" is designed to help someone organize grad schools they want to apply for. To use, simply follow the steps on the menu to add a grad school, search for grad schools in the database, or mark a grad school as applied. You can also search for grad schools by location, program, or tuition cost. 
+This program "grad school database" is designed to help someone organize grad schools they want to apply for.
 
-I wrote this software for two reasons. First, I wanted a database containing all the grad schools I have applied for or what to apply for. Second, I created this project to teach myself SQL. If you are a beginner to SQL, my code should be easy to understand because I am a beginner myself.
+To use, follow the easy-to-use menu (on the console) that gives you options to:
+1. Add a new grad school (e.g. university of georgia)
+2. Add a new Career Path (e.g. software engineer)
+3. Add a new program (e.g. masters in electrical engineering)
+4. Search programs by state
+5. Search programs by career path
+6. press q any time to quit
+
+I wrote this software for two reasons. First, I wanted a database containing all the grad schools I have applied for or what to apply for. Second, I created this project to teach myself SQL. If you are a beginner to SQL, my code should be easy to understand because I am a beginner myself. I also created a "help" file with some problems I ran into while creating this project, and solutions to how I solved them. Access it [here.](HELP.md)
 
 [//]: # (Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.)
 
@@ -12,7 +20,7 @@ I wrote this software for two reasons. First, I wanted a database containing all
 
 I am using the SQL relational database, specifically Python's built in "sqlite3."
 
-The program has a easy-to-use menu, but if you want to use the database itself, here is it's structure:
+If you want to use the database, here is it's structure:
 
 ### gradSchools.db structure:
 School table: 
