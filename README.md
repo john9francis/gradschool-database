@@ -35,9 +35,10 @@ school:
 |ID (auto-enumerating integer)|School (text)|Country_ID (integer)|State_ID (integer)|City_ID (integer)|
 |---|---|---|---|---|
 
-US cities and states table:
+### us_cities.db structure:
 
-[Borrowed from kelvins US cities database](#useful-websites)
+[see kelvins US cities database](https://github.com/kelvins/US-Cities-Database)
+
 
 # Development Environment
 
