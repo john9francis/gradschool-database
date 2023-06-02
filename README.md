@@ -59,7 +59,7 @@ Tutorial videos:
 Help with learning the syntax of SQLite:
 - [SQLite data types](https://www.sqlite.org/datatype3.html)
 
-Super nice application to visualize your database:
+Super nice application to visualize your database  (I highly recommend it):
 - [DB browser download](https://sqlitebrowser.org/)
 
 Where I got the database of cities and states:
