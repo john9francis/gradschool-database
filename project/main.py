@@ -74,15 +74,16 @@ def main():
                 # (add it to the database)
                 _ui.adding_to_database()
 
-                # step one: generate an ID for the school
+                # step one: find the state_id and the city_id
+                state_id = us_cities_db.get_id_by_value("US_STATES", "STATE_CODE", school_state)
+                city_id = us_cities_db.get_id_by_value("US_CITIES", "CITY", school_city)
+                country_id = 1 # USA
 
-                # step two: find the state_id and the city_id
+                # step two: put these values in a list with the specific order
+                school_value_list = [school_name, country_id, state_id, city_id]
 
-                # step three: put these values in a list with the specific order
-
-                # step four: add the grad school to the database.
-                value_list = ["ID","school","Country_Id","state_id","city_id"]
-                grad_school_db.add_to_database("school",)
+                # step three: add the grad school to the database.
+                grad_school_db.add_to_database("school", school_value_list)
 
             else:
                 _ui.back_to_menu()

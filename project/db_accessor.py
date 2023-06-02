@@ -58,15 +58,43 @@ class db_accessor:
         return False
     
     def add_to_database(self, table_name, value_list):
-        '''takes in the table name and a list of values (in order)
-        and enters them into the database. 
+        '''Takes in the table name and a list of values (in order)
+        and enters them into the database.
         - WARNING: make sure you put the values in the correct order
-        that the columns are in!!!'''
-        pass
+        that the columns are in!!!
+        - NOTE: skips the first column because it's an incrementing ID column.'''
     
+        num_values = len(value_list)
+
+        if num_values == 0:
+            return
+
+        query = f"INSERT INTO {table_name} VALUES (NULL,"
+
+        for i in range(num_values):
+            query += "?,"
+
+        query = query.rstrip(",") + ")"
+
+        self._cur.execute(query, value_list)
+
+        self._con.commit()
+
+    def get_id_by_value(self, table_name, column_name, value):
+        '''Takes in a value and returns the ID corresponding to that value in a table'''
+
+        query = f"SELECT ID FROM {table_name} WHERE {column_name} = ?"
+        self._cur.execute(query, (value,))
+        result = self._cur.fetchone()
+
+        if result:
+            return result[0]
+        else:
+            return None    
 
 
-#region DANGER ZONE, READ FUNCTION DESCRIPTIONS
+
+    #region DANGER ZONE, READ FUNCTION DESCRIPTIONS
 
     def create_tables(self):
         '''one time function to create our 3 tables:'''
@@ -104,4 +132,4 @@ class db_accessor:
 
         self._con.commit()
 
-#endregion
+    #endregion
