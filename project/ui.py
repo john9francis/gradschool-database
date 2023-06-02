@@ -22,9 +22,9 @@ class UI:
         print("Welcome to the grad school database.")
         print("Please choose an option by typing a number and pressing enter.")
         print("1. Add a new grad school (e.g. university of georgia)")
-        print("2. Add a new program (e.g. masters in electrical engineering)")
-        print("3. Search for a grad school in the database")
-        print("4. Mark a grad school as applied")
+        print("2. Add a new Career Path (e.g. software engineer)")
+        print("3. Add a new program (e.g. masters in electrical engineering)")
+        print("4. Search for a grad school in the database")
         print("5. press q any time to quit")
 
         valid_choice = False
@@ -38,9 +38,9 @@ class UI:
                 case "2":
                     return "add program"
                 case "3":
-                    return "search school"
+                    return "add career path"
                 case "4":
-                    return "mark applied"
+                    return "search school"
                 case "5":
                     return "quit"
                 case "q":
