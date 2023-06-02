@@ -115,7 +115,7 @@ def main():
         new career path to the grad school database.'''
 
         # get the new career path
-        career_path = _ui.get_career_path()
+        career_path = _ui.get_new_career_path()
 
         # confirm with user
         if _ui.confirm_add_to_database(career_path, "career_path"):
@@ -132,7 +132,14 @@ def main():
         '''asks user to enter a state, and displays all the programs in that state.'''
         
         # get state:
-        state = _ui.get_state()
+        while True:
+            state = _ui.get_state()
+
+            # check that the state is in the database:
+            if us_cities_db.check_value_existence("US_STATES","STATE_CODE",state):
+                break
+            else:
+                _ui.bad_input()
 
         # get the state's ID
         state_ID = us_cities_db.get_id_by_value("US_STATES","STATE_CODE",state)
@@ -141,11 +148,66 @@ def main():
         school_list = grad_school_db.get_all_by_ID("school","School","State_ID",state_ID)
     
         # get all the programs from that school...
+        program_with_school = dict() # key = program, value = school
+
         # (loop through the schools and get the ID for each)
-        
+        for school in school_list:
+            school_ID = grad_school_db.get_id_by_value("school","School",school)
+            temp_program_list = grad_school_db.get_all_by_ID("program","Program","School_ID",school_ID)
+
+            # add any program from that school into the programs dict
+            for p in temp_program_list:
+                program_with_school[p] = school
+
+        # tell the user that we're displaying programs in that state
+        _ui.displaying_programs_in_category(us_cities_db.get_value_by_ID("US_STATES","STATE_NAME",state_ID))
+
+        # finally, display all the programs
+        for program in program_with_school:
+            _ui.display_program_with_school(program, program_with_school[program])
+
+        _ui.user_input_to_continue()
 
     def search_program_by_career():
-        pass
+        '''asks user for their desired career path, and
+        displays all the grad programs that fulfill that career path.'''
+        '''asks user to enter a state, and displays all the programs in that state.'''
+        
+        # get all career paths
+        career_paths = grad_school_db.get_all_from_column("career_path","Career_path")
+
+        # user inputs career path
+        while True:
+            career_path = _ui.choose_career_path(career_paths)
+
+            # check if that career_path is in the database:
+            if grad_school_db.check_value_existence("career_path","Career_path",career_path):
+                break
+            else:
+                _ui.bad_input()
+                _ui.user_input_to_continue()
+
+        # get the career path's ID
+        career_ID = grad_school_db.get_id_by_value("career_path","Career_path", career_path)
+
+        # get a list of all the programs with that career_ID
+        program_list = grad_school_db.get_all_by_ID("program","Program","Career_Path_ID",career_ID)
+
+        # get all the schools joined with the programs
+        program_with_school = dict() # key = program, value = school
+        for program in program_list:
+            school_ID = grad_school_db.get_one_value_by_another("program","Program",program,"School_ID")
+            school = grad_school_db.get_value_by_ID("school", "School", school_ID)
+            program_with_school[program] = school
+
+        # tell user we're displaying all the programs in that career path
+        _ui.displaying_programs_in_category(career_path)
+
+        # display to the user all the programs with that ID.
+        for program in program_with_school:
+            _ui.display_program_with_school(program, program_with_school[program])
+
+        _ui.user_input_to_continue()
 
     #endregion
 
@@ -164,12 +226,10 @@ def main():
             add_career_path()
 
         if user_input == "search program by state":
-            #search_program_by_state()
-            pass
+            search_program_by_state()
 
         if user_input == "search program by career":
-            #search_program_by_career()
-            pass
+            search_program_by_career()
 
         if user_input == "quit":
             # get out of the big old while loop

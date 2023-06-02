@@ -80,10 +80,10 @@ class db_accessor:
 
         self._con.commit()
 
-    def get_id_by_value(self, table_name, column_name, value):
+    def get_id_by_value(self, table_name, value_column_name, value):
         '''Takes in a value and returns the ID corresponding to that value in a table'''
 
-        query = f"SELECT ID FROM {table_name} WHERE {column_name} = ?"
+        query = f"SELECT ID FROM {table_name} WHERE {value_column_name} = ?"
         self._cur.execute(query, (value,))
         result = self._cur.fetchone()
 
@@ -119,6 +119,19 @@ class db_accessor:
         rows = self._cur.fetchall()
 
         return [row[0] for row in rows]
+    
+    def get_one_value_by_another(self, table_name, value1_column, value1, value2_column):
+        '''takes in one value and the column name of the desired value,
+        and returns the value in the desired column on the same row as value1'''
+
+        query = f'SELECT {value2_column} FROM {table_name} WHERE {value1_column} = ?'
+        self._cur.execute(query, (value1,))
+        result = self._cur.fetchone() 
+
+        if result:
+            return result[0]
+        else:
+            return None
 
 
     #region DANGER ZONE, READ FUNCTION DESCRIPTIONS

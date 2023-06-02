@@ -67,14 +67,27 @@ class UI:
     def get_city(self):
         return input ("Please enter city (e.g. Atlanta): ")
     
-    def get_career_path(self):
+    def get_new_career_path(self):
         return input("What is the name of your new career path? (e.g. Software developer): ")
+    
+    def get_career_path(self):
+        return input("Please enter career path: ")
     
     def get_program_name(self):
         return input("What is the name of the program the school offers? (e.g. MS in computer science): ")
 
     def user_input_to_continue(self):
+        print()
         return input("Press enter to continue: ")
+    
+    def displaying_programs_in_category(self, category):
+        print(f"Here all your saved grad programs in {category}: ")
+        print()
+
+    
+    def display_program_with_school(self, program, school):
+        ''' e.g. "MS in engineering at Harvard"'''
+        print(f"{program} at {school}")
     
     def choose_for_program(self, category, schools):
         print()
@@ -84,6 +97,18 @@ class UI:
             print(school)
 
         return input("(Type your answer here): ")
+    
+    def choose_career_path(self, career_paths):
+        print()
+        print("Which career path?")
+        print("Options: ")
+        print()
+        for career in career_paths:
+            print(career)
+
+        print()
+        return input("(Type your answer here): ")
+
 
     def bad_input(self):
         print("Sorry, invalid choice. Please try again. ")
