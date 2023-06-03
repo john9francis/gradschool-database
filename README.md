@@ -15,6 +15,13 @@ To use, follow the easy-to-use menu (on the console) that gives you options to:
 
 I wrote this software for two reasons. First, I wanted a database containing all the grad schools I have applied for or what to apply for. Second, I created this project to teach myself SQL. If you are a beginner to SQL, my code should be easy to understand because I am a beginner myself. I also created a "help" file with some problems I ran into while creating this project, and solutions to how I solved them. Access it [here.](HELP.md)
 
+### Features of this software:
+
+- Database accessor class that can work with any database
+- Database accessor class contains lots of useful functions like "modify_value()" or "add_to_database()"
+- UI class that handles any user input or outputs in the console
+- UI class can be very easily changed to a better type of UI
+
 [//]: # (Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.)
 
 [Software Demo Video](http://youtube.link.goes.here)
