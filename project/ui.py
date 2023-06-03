@@ -26,7 +26,9 @@ class UI:
         print("3. Add a new program (e.g. masters in electrical engineering)")
         print("4. Search programs by state")
         print("5. Search programs by career path")
-        print("6. press q any time to quit")
+        print("6. Modify something from your database")
+        print("7. Delete something from your database")
+        print("8. Press q to quit")
 
         valid_choice = False
         while not valid_choice:
@@ -45,8 +47,14 @@ class UI:
                 case "5":
                     return "search program by career"
                 case "6":
+                    return "modify"
+                case "7":
+                    return "delete"
+                case "8":
                     return "quit"
                 case "q":
+                    return "quit"
+                case "Q":
                     return "quit"
                 case _:
                     print("Sorry, invalid choice. Please enter a number from 1 to 5: ")
@@ -137,6 +145,45 @@ class UI:
 
     def back_to_menu(self):
         print("Going back to main menu... ")
+
+    def get_table_to_modify(self, table_list):
+        print("Which table would you like to modify?")
+        print()
+        for table in table_list:
+            print(table)
+        print()
+        return input("(Enter choice): ")
+    
+    def get_value_to_modify(self, values):
+        '''takes in a list of values, let's the user choose, and returns their choice'''
+        print("Which value would you like to modify? ")
+        print("Options:")
+        print()
+        for value in values:
+            print(value)
+
+        print()
+        return input("(Enter choice): ")
+
+    def change_value(self, old_value):
+        '''takes in an old value, allows user to change it, and returns the new value.'''
+        return input(f'What would you like to change "{old_value}" to? ')
+    
+    def confirm_value_change(self, old_value, new_value):
+        '''confirms with user if they want to change an old value to a new value.'''
+        while True:
+            choice = input(f'You would like to change "{old_value}" to "{new_value}." Is this correct? (y/n): ')
+            if choice == "y" or choice == "Y":
+                return True
+            if choice == "n" or choice == "N":
+                return False
+            else:
+                self.bad_input()
+
+    def success_value_change(self, old_value, new_value):
+        '''tells user they successfully changed the value'''
+        print(f'Successfully changed "{old_value}" to "{new_value}" in the database.')
+
 
 
 

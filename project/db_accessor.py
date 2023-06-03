@@ -141,12 +141,54 @@ class db_accessor:
         query = f'UPDATE {table_name} SET {column_name} = ? WHERE {column_name} = ?'
         self._cur.execute(query, (new_value, old_value))
 
+        self._con.commit()
+
 
     def delete_value(self, table_name, column_name, value):
         '''Takes in a value and deletes the row containing that value from the table.'''
         
         query = f'DELETE FROM {table_name} WHERE {column_name} = ?'
-        self._cur.execute(query,(value,))
+        self._cur.execute(query, (value,))
+
+    def check_table_existence(self, table_name):
+        '''returns true if table exists and false if not'''
+        try:
+            self._cur.execute(f"SELECT * FROM {table_name}")
+            return True
+        except _sqlite3.OperationalError:
+            return False
+        
+    def get_all_values(self, table_name):
+        '''returns a list of all the values in a table'''
+
+        query = f'SELECT * FROM {table_name}'
+        self._cur.execute(query)
+
+        return self._cur.fetchall()
+    
+    def get_all_values_in_column(self, table_name, column_name):
+        '''returns a list of all the values in a specific column of a table'''
+
+        query = f'SELECT {column_name} FROM {table_name}'
+        self._cur.execute(query)
+
+        tuples = self._cur.fetchall()
+        return [value[0] for value in tuples]
+    
+    def get_value_column_name_gradschoolDB(self, table_name):
+        '''NOTE: THIS IS SPECIFIC TO THE GRADSCHOOL DATABASE
+        takes in the table name and returns the column where
+        the value is, (as opposed to the ID columns)'''
+
+        column_names = {
+            "career_path": "Career_path",
+            "program": "Program",
+            "school": "School"
+        }
+
+        return column_names.get(table_name)
+
+
 
 
 

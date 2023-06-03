@@ -211,6 +211,52 @@ def main():
         _ui.user_input_to_continue()
 
 
+    def modify_value():
+        '''allows the user to modify whatever they want in the database.'''
+
+        # find out what they want to modify.
+        while True:
+            table_list = ["career_path","program","school"]
+            table = _ui.get_table_to_modify(table_list)
+
+            # make sure the table exists:
+            if grad_school_db.check_table_existence(table):
+                # the table exists
+                break
+            else:
+                _ui.bad_input()
+
+        # get the correct column name
+        column_name = grad_school_db.get_value_column_name_gradschoolDB(table)
+
+        while True:
+            # get the value to modify
+            value = _ui.get_value_to_modify(grad_school_db.get_all_values_in_column(table,str(column_name)))
+
+            # make sure the value is in that certain column:
+            if grad_school_db.check_value_existence(table,column_name,value):
+                break
+            else:
+                _ui.bad_input()
+
+        
+        # allow user to modify the value
+        modified_value = _ui.change_value(value)
+
+        if _ui.confirm_value_change(value, modified_value):
+            # go ahead and change the value:
+            grad_school_db.modify_value(table, column_name, value, modified_value)
+            _ui.success_value_change(value, modified_value)
+        else:
+            # go back to main menu
+            _ui.back_to_menu()
+            _ui.user_input_to_continue()
+
+        
+
+    def delete_value():
+        pass
+
     #endregion
 
     while True:
@@ -232,6 +278,9 @@ def main():
 
         if user_input == "search program by career":
             search_program_by_career()
+
+        if user_input == "modify":
+            modify_value()
 
         if user_input == "quit":
             # get out of the big old while loop
