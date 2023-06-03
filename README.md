@@ -72,6 +72,7 @@ Where I got the database of cities and states:
 
 # Future Work
 
-- Add a way to delete schools, programs, or career paths
+- Add a way to delete schools or career paths
 - Add a method for marking schools applied or not yet applied for
 - Add a new table called "more_info" where the user can add extra info about a program like tuition cost, credits required, etc.
+- Add a better user interface like in a web or mobile app
