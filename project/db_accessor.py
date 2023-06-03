@@ -132,6 +132,22 @@ class db_accessor:
             return result[0]
         else:
             return None
+        
+
+    def modify_value(self, table_name, column_name, old_value, new_value):
+        '''Takes in an old value and a new value. Finds the old value in the 
+        table and changes it to the new value.'''
+
+        query = f'UPDATE {table_name} SET {column_name} = ? WHERE {column_name} = ?'
+        self._cur.execute(query, (new_value, old_value))
+
+
+    def delete_value(self, table_name, column_name, value):
+        '''Takes in a value and deletes the row containing that value from the table.'''
+        
+        query = f'DELETE FROM {table_name} WHERE {column_name} = ?'
+        self._cur.commit(query,(value,))
+
 
 
     #region DANGER ZONE, READ FUNCTION DESCRIPTIONS
