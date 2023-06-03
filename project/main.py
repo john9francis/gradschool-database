@@ -127,6 +127,30 @@ def main():
             _ui.back_to_menu()
             _ui.user_input_to_continue()
 
+
+    def view_programs():
+        '''Allows user to view a list of all the programs in the database'''
+        all_program_IDs = grad_school_db.get_all_from_column("program","ID")
+
+        # get all the schools joined with the programs
+        schools = []
+        programs = []
+        for id in all_program_IDs:
+            school_ID = grad_school_db.get_one_value_by_another("program","ID",id,"School_ID")
+            school = grad_school_db.get_value_by_ID("school", "School", school_ID)
+
+            schools.append(school)
+            programs.append(grad_school_db.get_value_by_ID("program","Program",id))
+
+        # tell user we're displaying all the programs in that career path
+        _ui.display_programs_in_category("the whole database")
+
+        # display to the user all the programs with that ID.
+        for i in range(len(programs)):
+            _ui.display_program_with_school(programs[i], schools[i])
+
+        _ui.user_input_to_continue()
+
     
     def search_program_by_state():
         '''asks user to enter a state, and displays all the programs in that state.'''
@@ -148,23 +172,26 @@ def main():
         school_list = grad_school_db.get_all_by_ID("school","School","State_ID",state_ID)
     
         # get all the programs from that school...
-        program_with_school = dict() # key = program, value = school
+        # note: these lists must be in order
+        schools = []
+        programs = []
 
         # (loop through the schools and get the ID for each)
         for school in school_list:
             school_ID = grad_school_db.get_id_by_value("school","School",school)
             temp_program_list = grad_school_db.get_all_by_ID("program","Program","School_ID",school_ID)
 
-            # add any program from that school into the programs dict
+            # add any program from that school into the lists
             for p in temp_program_list:
-                program_with_school[p] = school
+                schools.append(school)
+                programs.append(p)
 
         # tell the user that we're displaying programs in that state
-        _ui.displaying_programs_in_category(us_cities_db.get_value_by_ID("US_STATES","STATE_NAME",state_ID))
+        _ui.display_programs_in_category(us_cities_db.get_value_by_ID("US_STATES","STATE_NAME",state_ID))
 
         # finally, display all the programs
-        for program in program_with_school:
-            _ui.display_program_with_school(program, program_with_school[program])
+        for i in range(len(programs)):
+            _ui.display_program_with_school(programs[i],schools[i])
 
         _ui.user_input_to_continue()
 
@@ -192,21 +219,25 @@ def main():
         career_ID = grad_school_db.get_id_by_value("career_path","Career_path", career_path)
 
         # get a list of all the programs with that career_ID
-        program_list = grad_school_db.get_all_by_ID("program","Program","Career_Path_ID",career_ID)
+        program_id_list = grad_school_db.get_all_by_ID("program","ID","Career_Path_ID",career_ID)
 
         # get all the schools joined with the programs
-        program_with_school = dict() # key = program, value = school
-        for program in program_list:
-            school_ID = grad_school_db.get_one_value_by_another("program","Program",program,"School_ID")
+        schools = []
+        programs = []
+
+        for id in program_id_list:
+            school_ID = grad_school_db.get_one_value_by_another("program","ID",id,"School_ID")
             school = grad_school_db.get_value_by_ID("school", "School", school_ID)
-            program_with_school[program] = school
+
+            schools.append(school)
+            programs.append(grad_school_db.get_value_by_ID("program","Program",id))
 
         # tell user we're displaying all the programs in that career path
-        _ui.displaying_programs_in_category(career_path)
+        _ui.display_programs_in_category(career_path)
 
         # display to the user all the programs with that ID.
-        for program in program_with_school:
-            _ui.display_program_with_school(program, program_with_school[program])
+        for i in range(len(programs)):
+            _ui.display_program_with_school(programs[i],schools[i])
 
         _ui.user_input_to_continue()
 
@@ -252,10 +283,36 @@ def main():
             _ui.back_to_menu()
             _ui.user_input_to_continue()
 
-        
 
     def delete_value():
-        pass
+        '''Allows user to choose a value to delete
+        NOTE: for now, they can only delete programs.'''
+
+        # get all the programs from the database
+        programs = grad_school_db.get_all_values_in_column("program","Program")
+
+        # get user input:
+        while True:
+            delete_program = _ui.get_delete_program(programs)
+
+            # make sure it exists
+            if grad_school_db.check_value_existence("program","Program", delete_program):
+                break
+            else:
+                _ui.bad_input()
+                _ui.user_input_to_continue()
+
+        # make sure user wants to delete:
+        
+        if _ui.confirm_delete(delete_program):
+            # DELETE THE VALUE
+            grad_school_db.delete_value("program","Program",delete_program)
+
+            _ui.delete_success(delete_program)
+            _ui.user_input_to_continue()
+        else:
+            _ui.back_to_menu()
+            _ui.user_input_to_continue()
 
     #endregion
 
@@ -273,6 +330,9 @@ def main():
         if user_input == "add career path":
             add_career_path()
 
+        if user_input == "view programs":
+            view_programs()
+
         if user_input == "search program by state":
             search_program_by_state()
 
@@ -281,6 +341,9 @@ def main():
 
         if user_input == "modify":
             modify_value()
+
+        if user_input == "delete":
+            delete_value()
 
         if user_input == "quit":
             # get out of the big old while loop

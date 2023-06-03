@@ -150,6 +150,8 @@ class db_accessor:
         query = f'DELETE FROM {table_name} WHERE {column_name} = ?'
         self._cur.execute(query, (value,))
 
+        self._con.commit()
+
     def check_table_existence(self, table_name):
         '''returns true if table exists and false if not'''
         try:

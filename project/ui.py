@@ -24,11 +24,12 @@ class UI:
         print("1. Add a new grad school (e.g. university of georgia)")
         print("2. Add a new Career Path (e.g. software engineer)")
         print("3. Add a new program (e.g. masters in electrical engineering)")
-        print("4. Search programs by state")
-        print("5. Search programs by career path")
-        print("6. Modify something from your database")
-        print("7. Delete something from your database")
-        print("8. Press q to quit")
+        print("4. View all saved programs")
+        print("5. Search programs by state")
+        print("6. Search programs by career path")
+        print("7. Modify something from your database")
+        print("8. Delete something from your database")
+        print("9. Press q to quit")
 
         valid_choice = False
         while not valid_choice:
@@ -43,21 +44,23 @@ class UI:
                 case "3":
                     return "add program"
                 case "4":
-                    return "search program by state"
+                    return "view programs"
                 case "5":
-                    return "search program by career"
+                    return "search program by state"
                 case "6":
-                    return "modify"
+                    return "search program by career"
                 case "7":
-                    return "delete"
+                    return "modify"
                 case "8":
+                    return "delete"
+                case "9":
                     return "quit"
                 case "q":
                     return "quit"
                 case "Q":
                     return "quit"
                 case _:
-                    print("Sorry, invalid choice. Please enter a number from 1 to 5: ")
+                    print("Sorry, invalid choice. Please enter a number from 1 to 9: ")
                     valid_choice = False
             
 
@@ -87,10 +90,9 @@ class UI:
         print()
         return input("Press enter to continue: ")
     
-    def displaying_programs_in_category(self, category):
+    def display_programs_in_category(self, category):
         print(f"Here all your saved grad programs in {category}: ")
         print()
-
     
     def display_program_with_school(self, program, school):
         ''' e.g. "MS in engineering at Harvard"'''
@@ -185,5 +187,33 @@ class UI:
         print(f'Successfully changed "{old_value}" to "{new_value}" in the database.')
 
 
+    def get_delete_program(self, program_list):
+        '''lets user get the program they want to delete'''
 
+        print("Choose which program you would like to delete: ")
+        print()
+        for p in program_list:
+            print(p)
+        print()
 
+        return input("(Enter choice here): ")
+    
+    def confirm_delete(self, value):
+        '''make's sure the use wants to delete a value'''
+        warning = f"Are you sure you want to delete {value} from the program database? "
+        warning += "This will be permanent. (continue/cancel): "
+        while True:
+            print(warning)
+            choice = input()
+
+            if choice == "continue":
+                return True
+            if choice == "cancel":
+                return False
+            else:
+                self.bad_input()
+
+    def delete_success(self, value):
+        ''' tells user that the value was successfully deleted'''
+
+        print(f"{value} successfully deleted. ")
