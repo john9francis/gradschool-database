@@ -146,7 +146,7 @@ class db_accessor:
         '''Takes in a value and deletes the row containing that value from the table.'''
         
         query = f'DELETE FROM {table_name} WHERE {column_name} = ?'
-        self._cur.commit(query,(value,))
+        self._cur.execute(query,(value,))
 
 
 
