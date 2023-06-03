@@ -6,9 +6,12 @@ To use, follow the easy-to-use menu (on the console) that gives you options to:
 1. Add a new grad school (e.g. university of georgia)
 2. Add a new Career Path (e.g. software engineer)
 3. Add a new program (e.g. masters in electrical engineering)
-4. Search programs by state
-5. Search programs by career path
-6. press q any time to quit
+4. View all saved programs
+5. Search programs by state
+6. Search programs by career path
+7. Modify something from your database
+8. Delete something from your database
+9. press q any time to quit
 
 I wrote this software for two reasons. First, I wanted a database containing all the grad schools I have applied for or what to apply for. Second, I created this project to teach myself SQL. If you are a beginner to SQL, my code should be easy to understand because I am a beginner myself. I also created a "help" file with some problems I ran into while creating this project, and solutions to how I solved them. Access it [here.](HELP.md)
 
