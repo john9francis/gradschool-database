@@ -1,6 +1,6 @@
 # Overview
 
-This program "grad school database" is designed to help someone organize grad schools they want to apply for.
+This program "grad school database" is designed to help someone organize grad schools they want to apply for. It uses a SQL relational database to store the grad programs as well as schools, locations of schools (cities and states) and career paths.
 
 To use, follow the easy-to-use menu (on the console) that gives you options to:
 1. Add a new grad school (e.g. university of georgia)
